@@ -1,0 +1,461 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 221 51% 16%;
+    --card: 0 0% 100%;
+    --card-foreground: 221 51% 16%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 221 51% 16%;
+    --primary: 37 98% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 221 51% 16%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 221 51% 16%;
+    --accent: 37 98% 53%;
+    --accent-foreground: 221 51% 16%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 37 98% 53%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 221 51% 16%;
+    --foreground: 0 0% 100%;
+    --card: 221 51% 16%;
+    --card-foreground: 0 0% 100%;
+    --popover: 221 51% 16%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 37 98% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 90%;
+    --secondary-foreground: 221 51% 16%;
+    --muted: 221 51% 16%;
+    --muted-foreground: 0 0% 90%;
+    --accent: 37 98% 53%;
+    --accent-foreground: 221 51% 16%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 221 51% 16%;
+    --input: 221 51% 16%;
+    --ring: 37 98% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Update table styles for dark mode */
+.dark #horario-table {
+  @apply bg-oxford-blue;
+}
+
+.dark #horario-table * {
+  @apply border-white/20;
+}
+
+.dark #horario-table th,
+.dark #horario-table td {
+  @apply text-white bg-oxford-blue border-white/20;
+}
+
+/* Update container borders for dark mode */
+.dark .border {
+  @apply border-white/20;
+}
+
+.dark .card {
+  @apply border-white/20;
+}
+
+/* Better visual separation in dark mode */
+.dark .bg-card {
+  @apply bg-oxford-blue;
+}
+
+.dark .border-input {
+  @apply border-white/20;
+}
+
+/* Update table header in dark mode */
+.dark thead th {
+  @apply bg-oxford-blue/50 text-white border-white/20;
+}
+
+/* Update table cells in dark mode */
+.dark tbody td {
+  @apply border-white/20;
+}
+
+/* Update card shadows in dark mode */
+.dark .card-shadow {
+  @apply shadow-lg shadow-black/20;
+}
+
+/* Ensure dropzones are visible in dark mode */
+.dark .droppable-cell {
+  @apply border-white/20;
+}
+
+.dark .droppable-cell.is-over {
+  @apply bg-orange-web/20;
+}
+
+/* Update container backgrounds in dark mode */
+.dark .bg-secondary\/5 {
+  @apply bg-white/5;
+}
+
+.dark .bg-secondary\/20 {
+  @apply bg-white/10;
+}
+
+/* Remove dark mode overrides for schedule table */
+.dark #horario-table {
+  @apply bg-white;
+}
+
+.dark #horario-table * {
+  @apply border-slate-200;
+}
+
+.dark #horario-table th,
+.dark #horario-table td {
+  @apply text-gray-900 bg-white;
+}
+
+/* Ensure text in class containers remains dark in both modes */
+#horario-table .materia-container {
+  @apply text-gray-900 dark:text-gray-900;
+}
+
+#horario-table .materia-container .profesor {
+  @apply text-gray-800 dark:text-gray-800;
+}
+
+/* Ensure text remains black in dark mode for schedule components */
+.dark #horario-table,
+.dark .horario-footer {
+  /* @apply text-black; */
+}
+
+/* Make text black in draggable assignments */
+.draggable-asignacion {
+  @apply text-black;
+}
+
+.draggable-asignacion * {
+  @apply text-black;
+}
+
+/* Ensure text in class containers remains dark in both modes */
+#horario-table .materia-container,
+.draggable-asignacion {
+  @apply text-gray-900;
+}
+
+#horario-table .materia-container .profesor,
+.draggable-asignacion .profesor {
+  @apply text-gray-800;
+}
+
+/* Force black text in dark mode for draggable assignments */
+.dark .draggable-asignacion div {
+  @apply text-black;
+}
+
+.dark .draggable-asignacion .font-medium,
+.dark .draggable-asignacion .text-sm {
+  @apply text-black;
+}
+
+.gradient-bg {
+  @apply bg-gradient-to-br from-orange-100 to-orange-300 dark:from-gray-900 dark:to-gray-800;
+}
+
+.card-shadow {
+  @apply shadow-md dark:shadow-orange-900/20;
+}
+
+/* Estilos para mejorar la experiencia de arrastre */
+.dragging {
+  cursor: grabbing !important;
+}
+
+.draggable-asignacion {
+  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.draggable-asignacion:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.draggable-asignacion:active {
+  transform: scale(0.98);
+}
+
+.droppable-cell {
+  transition: background-color 0.2s ease-in-out;
+}
+
+.droppable-cell.can-drop {
+  background-color: rgba(0, 255, 0, 0.1);
+}
+
+.droppable-cell.is-over {
+  background-color: rgba(0, 255, 0, 0.2);
+}
+
+.text-on-color {
+  @apply text-gray-900 dark:text-gray-900;
+}
+
+.text-on-color-muted {
+  @apply text-gray-800 dark:text-gray-800;
+}
+
+/* Responsive styles */
+@media (max-width: 640px) {
+  .draggable-asignacion {
+    font-size: 0.75rem;
+  }
+
+  .table-container {
+    margin: 0 -0.5rem;
+  }
+
+  .droppable-cell {
+    padding: 0.25rem;
+  }
+}
+
+/* Mejorar scroll en móviles */
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+/* Ajustar tamaño de scroll en móviles */
+.overflow-x-auto::-webkit-scrollbar {
+  height: 6px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+/* Asegurar que los elementos draggables sean tocables en móviles */
+@media (hover: none) {
+  .draggable-asignacion {
+    touch-action: none;
+  }
+}
+
+/* Añadir estas líneas al final del archivo para asegurar que los cambios de color se apliquen correctamente */
+
+/* Estilos para transiciones suaves de color */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Asegurar que los botones y elementos interactivos reflejen el color primario */
+.btn-primary,
+.bg-primary,
+[data-variant="default"] {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.border-primary {
+  border-color: var(--primary);
+}
+
+.ring-primary {
+  --tw-ring-color: var(--primary);
+}
+
+/* Asegurar que los elementos de acento usen el color de acento */
+.bg-accent {
+  background-color: var(--accent);
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+.border-accent {
+  border-color: var(--accent);
+}
+
+/* Clase para forzar la actualización de colores */
+.theme-changed * {
+  transition: none !important;
+}
+
+/* Añadir estos estilos al final del archivo para asegurar que todos los elementos cambien de color correctamente */
+
+/* Reemplazar las clases de hover actuales con estas versiones corregidas */
+
+/* Asegurar que los hovers también cambien de color */
+.hover\:text-primary:hover {
+  color: var(--primary) !important;
+}
+
+.hover\:bg-primary:hover {
+  background-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
+}
+
+.hover\:border-primary:hover {
+  border-color: var(--primary) !important;
+}
+
+/* Corregir los hovers para los botones y elementos interactivos */
+button:hover,
+.button:hover,
+[role="button"]:hover,
+a:hover {
+  opacity: 0.9;
+}
+
+/* Corregir específicamente los hovers para los botones ghost */
+[data-variant="ghost"]:hover {
+  background-color: hsl(var(--accent) / 0.1) !important;
+  color: var(--accent-foreground) !important;
+}
+
+/* Corregir específicamente los hovers para los botones outline */
+[data-variant="outline"]:hover {
+  background-color: hsl(var(--accent) / 0.1) !important;
+  color: var(--accent-foreground) !important;
+  border-color: var(--border) !important;
+}
+
+/* Corregir específicamente los hovers para los botones default */
+[data-variant="default"]:hover {
+  background-color: var(--primary) !important;
+  opacity: 0.9;
+}
+
+/* Asegurar que los elementos de navegación mantengan sus estilos en hover */
+.text-muted-foreground.hover\:text-foreground:hover {
+  color: hsl(var(--foreground)) !important;
+}
+
+.text-muted-foreground.hover\:bg-accent:hover {
+  background-color: hsl(var(--accent) / 0.1) !important;
+}
+
+/* Asegurar que los elementos de la interfaz de usuario mantengan sus estilos en hover */
+.hover\:bg-accent:hover {
+  background-color: hsl(var(--accent) / 0.1) !important;
+}
+
+.hover\:text-accent-foreground:hover {
+  color: var(--accent-foreground) !important;
+}
+
+/* Asegurar que los elementos activos también cambien de color */
+.active\:text-primary:active {
+  color: var(--primary);
+}
+
+.active\:bg-primary:active {
+  background-color: var(--primary);
+}
+
+.active\:border-primary:active {
+  border-color: var(--primary);
+}
+
+/* Asegurar que los elementos focus también cambien de color */
+.focus\:text-primary:focus {
+  color: var(--primary);
+}
+
+.focus\:bg-primary:focus {
+  background-color: var(--primary);
+}
+
+.focus\:border-primary:focus {
+  border-color: var(--primary);
+}
+
+.focus\:ring-primary:focus {
+  --tw-ring-color: var(--primary);
+}
+
+/* Asegurar que los elementos de la interfaz de usuario cambien de color */
+.ui-selected\:text-primary[data-selected] {
+  color: var(--primary);
+}
+
+.ui-selected\:bg-primary[data-selected] {
+  background-color: var(--primary);
+}
+
+.ui-selected\:border-primary[data-selected] {
+  border-color: var(--primary);
+}
+
+/* Asegurar que los elementos de la interfaz de usuario cambien de color en hover */
+.ui-hover\:text-primary[data-hover] {
+  color: var(--primary);
+}
+
+.ui-hover\:bg-primary[data-hover] {
+  background-color: var(--primary);
+}
+
+.ui-hover\:border-primary[data-hover] {
+  border-color: var(--primary);
+}
+
+/* Asegurar que los elementos de la interfaz de usuario cambien de color en focus */
+.ui-focus\:text-primary[data-focus] {
+  color: var(--primary);
+}
+
+.ui-focus\:bg-primary[data-focus] {
+  background-color: var(--primary);
+}
+
+.ui-focus\:border-primary[data-focus] {
+  border-color: var(--primary);
+}
+
+/* Asegurar que los elementos de la interfaz de usuario cambien de color en active */
+.ui-active\:text-primary[data-active] {
+  color: var(--primary);
+}
+
+.ui-active\:bg-primary[data-active] {
+  background-color: var(--primary);
+}
+
+.ui-active\:border-primary[data-active] {
+  border-color: var(--primary);
+}
